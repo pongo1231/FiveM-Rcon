@@ -5,6 +5,7 @@ namespace FiveMRcon
 {
 	public partial class ServerConnectForm : Form
 	{
+		private Form _Parent { get; }
 		private bool _IsIPAndPassEntered
 		{
 			get
@@ -13,8 +14,10 @@ namespace FiveMRcon
 			}
 		}
 
-		public ServerConnectForm()
+		public ServerConnectForm(Form parent)
 		{
+			_Parent = parent;
+
 			InitializeComponent();
 
 			if (InfoHolder.ServerIP != null)
@@ -47,6 +50,8 @@ namespace FiveMRcon
 				InfoHolder.ServerPort = 30120;
 			}
 			InfoHolder.ServerPass = InputPass.Text.Trim();
+
+			_Parent.Text = InputIP.Text;
 			Close();
 		}
 	}

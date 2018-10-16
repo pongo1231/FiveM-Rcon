@@ -21,7 +21,7 @@ namespace FiveMRcon
 
 		private void ToolbarServerDropdownConnect_Click(object sender, EventArgs e)
 		{
-			ServerConnectForm serverConnectDialog = new ServerConnectForm();
+			ServerConnectForm serverConnectDialog = new ServerConnectForm(this);
 			serverConnectDialog.ShowDialog();
 		}
 
