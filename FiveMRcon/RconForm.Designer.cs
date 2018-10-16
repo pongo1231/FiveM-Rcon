@@ -43,7 +43,7 @@
 			// InputText
 			// 
 			this.InputText.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.InputText.Location = new System.Drawing.Point(12, 417);
+			this.InputText.Location = new System.Drawing.Point(12, 416);
 			this.InputText.Name = "InputText";
 			this.InputText.Size = new System.Drawing.Size(707, 20);
 			this.InputText.TabIndex = 0;
@@ -54,9 +54,9 @@
 			// 
 			this.InputSend.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.InputSend.Enabled = false;
-			this.InputSend.Location = new System.Drawing.Point(725, 414);
+			this.InputSend.Location = new System.Drawing.Point(725, 416);
 			this.InputSend.Name = "InputSend";
-			this.InputSend.Size = new System.Drawing.Size(63, 23);
+			this.InputSend.Size = new System.Drawing.Size(63, 20);
 			this.InputSend.TabIndex = 1;
 			this.InputSend.Text = "Send";
 			this.InputSend.UseVisualStyleBackColor = true;

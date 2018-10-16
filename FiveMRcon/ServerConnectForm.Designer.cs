@@ -59,9 +59,9 @@
 			// InputConnect
 			// 
 			this.InputConnect.Enabled = false;
-			this.InputConnect.Location = new System.Drawing.Point(239, 60);
+			this.InputConnect.Location = new System.Drawing.Point(239, 62);
 			this.InputConnect.Name = "InputConnect";
-			this.InputConnect.Size = new System.Drawing.Size(75, 23);
+			this.InputConnect.Size = new System.Drawing.Size(75, 20);
 			this.InputConnect.TabIndex = 2;
 			this.InputConnect.Text = "Connect";
 			this.InputConnect.UseVisualStyleBackColor = true;
