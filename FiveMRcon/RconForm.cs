@@ -128,7 +128,14 @@ namespace FiveMRcon
 
 		private void _Log(LogType logType, string text)
 		{
-			Log.AppendText($"{(logType == LogType.SENT ? "> " : "< ")} {text} \r\n");
+			string prefix = null;
+			if (InfoHolder.ServerIP != null)
+				prefix = InfoHolder.ServerIP;
+			if (logType == LogType.SENT)
+				prefix = $"{prefix} >";
+			else
+				prefix = $"{prefix} <";
+			Log.AppendText($"{prefix} {text} \r\n");
 		}
 	}
 }
