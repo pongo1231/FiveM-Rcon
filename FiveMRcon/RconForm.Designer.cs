@@ -28,12 +28,15 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RconForm));
 			this.InputText = new System.Windows.Forms.TextBox();
 			this.InputSend = new System.Windows.Forms.Button();
 			this.Log = new System.Windows.Forms.TextBox();
 			this.Toolbar = new System.Windows.Forms.ToolStrip();
 			this.ToolbarServerDropdown = new System.Windows.Forms.ToolStripDropDownButton();
 			this.ToolbarServerDropdownConnect = new System.Windows.Forms.ToolStripMenuItem();
+			this.ToolbarEditDropdown = new System.Windows.Forms.ToolStripDropDownButton();
+			this.ToolbarEditDropdownClearHistory = new System.Windows.Forms.ToolStripMenuItem();
 			this.Toolbar.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -73,7 +76,8 @@
 			// 
 			this.Toolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 			this.Toolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolbarServerDropdown});
+            this.ToolbarServerDropdown,
+            this.ToolbarEditDropdown});
 			this.Toolbar.Location = new System.Drawing.Point(0, 0);
 			this.Toolbar.Name = "Toolbar";
 			this.Toolbar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -95,9 +99,27 @@
 			// ToolbarServerDropdownConnect
 			// 
 			this.ToolbarServerDropdownConnect.Name = "ToolbarServerDropdownConnect";
-			this.ToolbarServerDropdownConnect.Size = new System.Drawing.Size(119, 22);
+			this.ToolbarServerDropdownConnect.Size = new System.Drawing.Size(180, 22);
 			this.ToolbarServerDropdownConnect.Text = "Connect";
 			this.ToolbarServerDropdownConnect.Click += new System.EventHandler(this.ToolbarServerDropdownConnect_Click);
+			// 
+			// ToolbarEditDropdown
+			// 
+			this.ToolbarEditDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+			this.ToolbarEditDropdown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolbarEditDropdownClearHistory});
+			this.ToolbarEditDropdown.Image = ((System.Drawing.Image)(resources.GetObject("ToolbarEditDropdown.Image")));
+			this.ToolbarEditDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.ToolbarEditDropdown.Name = "ToolbarEditDropdown";
+			this.ToolbarEditDropdown.Size = new System.Drawing.Size(40, 22);
+			this.ToolbarEditDropdown.Text = "Edit";
+			// 
+			// ToolbarEditDropdownClearHistory
+			// 
+			this.ToolbarEditDropdownClearHistory.Name = "ToolbarEditDropdownClearHistory";
+			this.ToolbarEditDropdownClearHistory.Size = new System.Drawing.Size(202, 22);
+			this.ToolbarEditDropdownClearHistory.Text = "Clear Command History";
+			this.ToolbarEditDropdownClearHistory.Click += new System.EventHandler(this.ToolbarEditDropdownClearHistory_Click);
 			// 
 			// RconForm
 			// 
@@ -127,6 +149,8 @@
 		private System.Windows.Forms.ToolStrip Toolbar;
 		private System.Windows.Forms.ToolStripDropDownButton ToolbarServerDropdown;
 		private System.Windows.Forms.ToolStripMenuItem ToolbarServerDropdownConnect;
+		private System.Windows.Forms.ToolStripDropDownButton ToolbarEditDropdown;
+		private System.Windows.Forms.ToolStripMenuItem ToolbarEditDropdownClearHistory;
 	}
 }
 

@@ -25,6 +25,12 @@ namespace FiveMRcon
 			serverConnectDialog.ShowDialog();
 		}
 
+		private void ToolbarEditDropdownClearHistory_Click(object sender, EventArgs e)
+		{
+			_CurrentCmdHistoryNode = new CmdHistoryNode(null);
+			MessageBox.Show("Command History cleared!");
+		}
+
 		private void InputText_TextChanged(object sender, EventArgs e)
 		{
 			InputSend.Enabled = InputText.Text.Trim().Length > 0;
