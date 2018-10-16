@@ -71,7 +71,10 @@ namespace FiveMRcon
 			int port = InfoHolder.ServerPort;
 			string pass = InfoHolder.ServerPass;
 			if (ip == null || port == 0 || pass == null)
+			{
 				_Log(LogType.RECEIVED, "Please specify a server first.");
+				SystemSounds.Beep.Play();
+			}
 			else
 			{
 				IPEndPoint endPoint = null;
@@ -82,6 +85,7 @@ namespace FiveMRcon
 				catch (FormatException)
 				{
 					_Log(LogType.RECEIVED, "Invalid IP");
+					SystemSounds.Beep.Play();
 				}
 
 				if (endPoint != null)
@@ -101,6 +105,7 @@ namespace FiveMRcon
 					catch (SocketException)
 					{
 						_Log(LogType.RECEIVED, "Time Out");
+						SystemSounds.Beep.Play();
 					}
 				}
 			}
