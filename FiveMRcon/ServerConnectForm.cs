@@ -9,7 +9,7 @@ namespace FiveMRcon
 		{
 			get
 			{
-				return InputIP.Text.Trim().Length > 0 && InputPass.Text.Trim().Length > 0 && InputPort.TextLength > 0;
+				return InputIP.Text.Trim().Length > 0 && InputPass.Text.Trim().Length > 0;
 			}
 		}
 
@@ -35,11 +35,6 @@ namespace FiveMRcon
 			InputConnect.Enabled = _IsIPAndPassEntered;
 		}
 
-		private void InputPort_TextChanged(object sender, System.EventArgs e)
-		{
-			InputConnect.Enabled = _IsIPAndPassEntered;
-		}
-
 		private void InputConnect_Click(object sender, System.EventArgs e)
 		{
 			InfoHolder.ServerIP = InputIP.Text.Trim();
@@ -49,7 +44,7 @@ namespace FiveMRcon
 			}
 			catch (FormatException)
 			{
-				InfoHolder.ServerPort = 0;
+				InfoHolder.ServerPort = 30120;
 			}
 			InfoHolder.ServerPass = InputPass.Text.Trim();
 			Close();
