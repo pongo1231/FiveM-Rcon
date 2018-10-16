@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Media;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -8,8 +9,12 @@ namespace FiveMRcon
 {
 	public partial class RconForm : Form
 	{
+		private CmdHistoryNode _CurrentCmdHistoryNode;
+
 		public RconForm()
 		{
+			_CurrentCmdHistoryNode = new CmdHistoryNode(null);
+
 			InitializeComponent();
 			ActiveControl = InputText;
 		}
@@ -23,6 +28,37 @@ namespace FiveMRcon
 		private void InputText_TextChanged(object sender, EventArgs e)
 		{
 			InputSend.Enabled = InputText.Text.Trim().Length > 0;
+		}
+
+		private void InputText_KeyUp(object sender, KeyEventArgs e)
+		{
+			bool relevantKeyUp = false;
+			if (e.KeyCode == Keys.Up)
+			{
+				if (_CurrentCmdHistoryNode.PreviousCmdNode != null)
+				{
+					_CurrentCmdHistoryNode = _CurrentCmdHistoryNode.PreviousCmdNode;
+					relevantKeyUp = true;
+				}
+				else
+					SystemSounds.Beep.Play();
+			}
+			else if (e.KeyCode == Keys.Down)
+			{
+				if (_CurrentCmdHistoryNode.NextCmdNode != null)
+				{
+					_CurrentCmdHistoryNode = _CurrentCmdHistoryNode.NextCmdNode;
+					relevantKeyUp = true;
+				}
+				else
+					SystemSounds.Beep.Play();
+			}
+
+			if (relevantKeyUp)
+			{
+				InputText.Text = _CurrentCmdHistoryNode.Command;
+				InputText.SelectionStart = InputText.TextLength;
+			}
 		}
 
 		private void InputSend_Click(object sender, EventArgs e)
@@ -68,6 +104,13 @@ namespace FiveMRcon
 					}
 				}
 			}
+
+			CmdHistoryNode newCmdHistoryNode = new CmdHistoryNode(_CurrentCmdHistoryNode);
+			// Set command and next node of current node
+			_CurrentCmdHistoryNode.Command = InputText.Text;
+			_CurrentCmdHistoryNode.NextCmdNode = newCmdHistoryNode;
+			// Set current node to new one
+			_CurrentCmdHistoryNode = newCmdHistoryNode;
 
 			InputText.ResetText();
 			ActiveControl = InputText;

@@ -45,6 +45,7 @@
 			this.InputText.Size = new System.Drawing.Size(707, 20);
 			this.InputText.TabIndex = 0;
 			this.InputText.TextChanged += new System.EventHandler(this.InputText_TextChanged);
+			this.InputText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.InputText_KeyUp);
 			// 
 			// InputSend
 			// 
