@@ -41,21 +41,17 @@ namespace FiveMRcon
 			bool relevantKeyUp = false;
 			if (e.KeyCode == Keys.Up)
 			{
+				relevantKeyUp = true;
 				if (_CurrentCmdHistoryNode.PreviousCmdNode != null)
-				{
 					_CurrentCmdHistoryNode = _CurrentCmdHistoryNode.PreviousCmdNode;
-					relevantKeyUp = true;
-				}
 				else
 					SystemSounds.Beep.Play();
 			}
 			else if (e.KeyCode == Keys.Down)
 			{
+				relevantKeyUp = true;
 				if (_CurrentCmdHistoryNode.NextCmdNode != null)
-				{
 					_CurrentCmdHistoryNode = _CurrentCmdHistoryNode.NextCmdNode;
-					relevantKeyUp = true;
-				}
 				else
 					SystemSounds.Beep.Play();
 			}
@@ -116,6 +112,10 @@ namespace FiveMRcon
 				}
 			}
 
+			// Get to the newest node first
+			while (_CurrentCmdHistoryNode.NextCmdNode != null)
+				_CurrentCmdHistoryNode = _CurrentCmdHistoryNode.NextCmdNode;
+			// Create new node
 			CmdHistoryNode newCmdHistoryNode = new CmdHistoryNode(_CurrentCmdHistoryNode);
 			// Set command and next node of current node
 			_CurrentCmdHistoryNode.Command = InputText.Text;
