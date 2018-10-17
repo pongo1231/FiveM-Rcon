@@ -38,6 +38,7 @@
 			this.ToolbarEditDropdown = new System.Windows.Forms.ToolStripDropDownButton();
 			this.ToolbarEditDropdownClearHistory = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolbarEditDropdownSettings = new System.Windows.Forms.ToolStripMenuItem();
+			this.ToolbarServerDropdownSaved = new System.Windows.Forms.ToolStripMenuItem();
 			this.Toolbar.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -90,7 +91,8 @@
 			this.ToolbarServerDropdown.AutoToolTip = false;
 			this.ToolbarServerDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.ToolbarServerDropdown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolbarServerDropdownConnect});
+            this.ToolbarServerDropdownConnect,
+            this.ToolbarServerDropdownSaved});
 			this.ToolbarServerDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.ToolbarServerDropdown.Name = "ToolbarServerDropdown";
 			this.ToolbarServerDropdown.Size = new System.Drawing.Size(52, 22);
@@ -101,7 +103,7 @@
 			// 
 			this.ToolbarServerDropdownConnect.Name = "ToolbarServerDropdownConnect";
 			this.ToolbarServerDropdownConnect.Size = new System.Drawing.Size(180, 22);
-			this.ToolbarServerDropdownConnect.Text = "Connect";
+			this.ToolbarServerDropdownConnect.Text = "Direct Connect";
 			this.ToolbarServerDropdownConnect.Click += new System.EventHandler(this.ToolbarServerDropdownConnect_Click);
 			// 
 			// ToolbarEditDropdown
@@ -129,6 +131,12 @@
 			this.ToolbarEditDropdownSettings.Size = new System.Drawing.Size(202, 22);
 			this.ToolbarEditDropdownSettings.Text = "Settings";
 			this.ToolbarEditDropdownSettings.Click += new System.EventHandler(this.ToolbarEditDropdownSettings_Click);
+			// 
+			// ToolbarServerDropdownSaved
+			// 
+			this.ToolbarServerDropdownSaved.Name = "ToolbarServerDropdownSaved";
+			this.ToolbarServerDropdownSaved.Size = new System.Drawing.Size(180, 22);
+			this.ToolbarServerDropdownSaved.Text = "Saved Servers";
 			// 
 			// RconForm
 			// 
@@ -161,6 +169,7 @@
 		private System.Windows.Forms.ToolStripDropDownButton ToolbarEditDropdown;
 		private System.Windows.Forms.ToolStripMenuItem ToolbarEditDropdownClearHistory;
 		private System.Windows.Forms.ToolStripMenuItem ToolbarEditDropdownSettings;
+		private System.Windows.Forms.ToolStripMenuItem ToolbarServerDropdownSaved;
 	}
 }
 
