@@ -46,6 +46,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(316, 224);
 			this.Controls.Add(this.label1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Name = "SettingsForm";
 			this.Text = "SettingsForm";
 			this.ResumeLayout(false);

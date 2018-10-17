@@ -25,6 +25,12 @@ namespace FiveMRcon
 			serverConnectDialog.ShowDialog();
 		}
 
+		private void ToolbarServerDropdownSaved_Click(object sender, EventArgs e)
+		{
+			ServerListForm serverListDialog = new ServerListForm();
+			serverListDialog.ShowDialog();
+		}
+
 		private void ToolbarEditDropdownClearHistory_Click(object sender, EventArgs e)
 		{
 			_CurrentCmdHistoryNode = new CmdHistoryNode(null);
@@ -73,14 +79,14 @@ namespace FiveMRcon
 		{
 			InputSend.Enabled = false;
 
-			_Log(LogType.SENT, InputText.Text);
+			_Log(_LogType.SENT, InputText.Text);
 
 			string ip = InfoHolder.ServerIP;
 			int port = InfoHolder.ServerPort;
 			string pass = InfoHolder.ServerPass;
 			if (ip == null || port == 0 || pass == null)
 			{
-				_Log(LogType.RECEIVED, "Please specify a server first.");
+				_Log(_LogType.RECEIVED, "Please specify a server first.");
 				SystemSounds.Beep.Play();
 			}
 			else
@@ -92,7 +98,7 @@ namespace FiveMRcon
 				}
 				catch (FormatException)
 				{
-					_Log(LogType.RECEIVED, "Invalid IP");
+					_Log(_LogType.RECEIVED, "Invalid IP");
 					SystemSounds.Beep.Play();
 				}
 
@@ -108,11 +114,11 @@ namespace FiveMRcon
 					try
 					{
 						byte[] receiveData = udp.Receive(ref endPoint);
-						_Log(LogType.RECEIVED, Encoding.Default.GetString(receiveData).Substring(10));
+						_Log(_LogType.RECEIVED, Encoding.Default.GetString(receiveData).Substring(10));
 					}
 					catch (SocketException)
 					{
-						_Log(LogType.RECEIVED, "Time Out");
+						_Log(_LogType.RECEIVED, "Time Out");
 						SystemSounds.Beep.Play();
 					}
 				}
@@ -133,17 +139,17 @@ namespace FiveMRcon
 			ActiveControl = InputText;
 		}
 
-		private enum LogType {
+		private enum _LogType {
 			SENT,
 			RECEIVED
 		}
 
-		private void _Log(LogType logType, string text)
+		private void _Log(_LogType logType, string text)
 		{
 			string prefix = null;
 			if (InfoHolder.ServerIP != null)
 				prefix = InfoHolder.ServerIP;
-			if (logType == LogType.SENT)
+			if (logType == _LogType.SENT)
 				prefix = $"{prefix} >";
 			else
 				prefix = $"{prefix} <";

@@ -137,6 +137,7 @@
 			this.ToolbarServerDropdownSaved.Name = "ToolbarServerDropdownSaved";
 			this.ToolbarServerDropdownSaved.Size = new System.Drawing.Size(180, 22);
 			this.ToolbarServerDropdownSaved.Text = "Saved Servers";
+			this.ToolbarServerDropdownSaved.Click += new System.EventHandler(this.ToolbarServerDropdownSaved_Click);
 			// 
 			// RconForm
 			// 
