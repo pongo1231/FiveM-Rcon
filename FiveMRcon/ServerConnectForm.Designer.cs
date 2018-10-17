@@ -40,7 +40,7 @@
 			// InputIP
 			// 
 			this.InputIP.Location = new System.Drawing.Point(75, 16);
-			this.InputIP.MaxLength = 20;
+			this.InputIP.MaxLength = 30;
 			this.InputIP.Name = "InputIP";
 			this.InputIP.Size = new System.Drawing.Size(155, 20);
 			this.InputIP.TabIndex = 0;
