@@ -31,6 +31,12 @@ namespace FiveMRcon
 			MessageBox.Show("Command History cleared!");
 		}
 
+		private void ToolbarEditDropdownSettings_Click(object sender, EventArgs e)
+		{
+			SettingsForm settingsDialog = new SettingsForm();
+			settingsDialog.ShowDialog();
+		}
+
 		private void InputText_TextChanged(object sender, EventArgs e)
 		{
 			InputSend.Enabled = InputText.Text.Trim().Length > 0;

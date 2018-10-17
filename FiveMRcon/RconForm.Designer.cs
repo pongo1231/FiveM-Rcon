@@ -37,6 +37,7 @@
 			this.ToolbarServerDropdownConnect = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolbarEditDropdown = new System.Windows.Forms.ToolStripDropDownButton();
 			this.ToolbarEditDropdownClearHistory = new System.Windows.Forms.ToolStripMenuItem();
+			this.ToolbarEditDropdownSettings = new System.Windows.Forms.ToolStripMenuItem();
 			this.Toolbar.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -107,7 +108,8 @@
 			// 
 			this.ToolbarEditDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.ToolbarEditDropdown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolbarEditDropdownClearHistory});
+            this.ToolbarEditDropdownClearHistory,
+            this.ToolbarEditDropdownSettings});
 			this.ToolbarEditDropdown.Image = ((System.Drawing.Image)(resources.GetObject("ToolbarEditDropdown.Image")));
 			this.ToolbarEditDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.ToolbarEditDropdown.Name = "ToolbarEditDropdown";
@@ -120,6 +122,13 @@
 			this.ToolbarEditDropdownClearHistory.Size = new System.Drawing.Size(202, 22);
 			this.ToolbarEditDropdownClearHistory.Text = "Clear Command History";
 			this.ToolbarEditDropdownClearHistory.Click += new System.EventHandler(this.ToolbarEditDropdownClearHistory_Click);
+			// 
+			// ToolbarEditDropdownSettings
+			// 
+			this.ToolbarEditDropdownSettings.Name = "ToolbarEditDropdownSettings";
+			this.ToolbarEditDropdownSettings.Size = new System.Drawing.Size(202, 22);
+			this.ToolbarEditDropdownSettings.Text = "Settings";
+			this.ToolbarEditDropdownSettings.Click += new System.EventHandler(this.ToolbarEditDropdownSettings_Click);
 			// 
 			// RconForm
 			// 
@@ -151,6 +160,7 @@
 		private System.Windows.Forms.ToolStripMenuItem ToolbarServerDropdownConnect;
 		private System.Windows.Forms.ToolStripDropDownButton ToolbarEditDropdown;
 		private System.Windows.Forms.ToolStripMenuItem ToolbarEditDropdownClearHistory;
+		private System.Windows.Forms.ToolStripMenuItem ToolbarEditDropdownSettings;
 	}
 }
 
