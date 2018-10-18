@@ -37,16 +37,19 @@
 			this.ServerInputPort = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.ServerInputPass = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.ServerInputSave = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// ServerList
 			// 
+			this.ServerList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.ServerList.Location = new System.Drawing.Point(13, 13);
 			this.ServerList.Name = "ServerList";
 			this.ServerList.Size = new System.Drawing.Size(210, 389);
 			this.ServerList.TabIndex = 0;
 			this.ServerList.UseCompatibleStateImageBehavior = false;
+			this.ServerList.View = System.Windows.Forms.View.List;
+			this.ServerList.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(ServerList_ItemSelectionChanged);
 			// 
 			// ServerAdd
 			// 
@@ -118,22 +121,22 @@
 			this.ServerInputPass.Size = new System.Drawing.Size(100, 20);
 			this.ServerInputPass.TabIndex = 8;
 			// 
-			// button1
+			// ServerInputSave
 			// 
-			this.button1.Enabled = false;
-			this.button1.Location = new System.Drawing.Point(475, 103);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 9;
-			this.button1.Text = "Save";
-			this.button1.UseVisualStyleBackColor = true;
+			this.ServerInputSave.Enabled = false;
+			this.ServerInputSave.Location = new System.Drawing.Point(444, 103);
+			this.ServerInputSave.Name = "ServerInputSave";
+			this.ServerInputSave.Size = new System.Drawing.Size(75, 23);
+			this.ServerInputSave.TabIndex = 9;
+			this.ServerInputSave.Text = "Save";
+			this.ServerInputSave.UseVisualStyleBackColor = true;
 			// 
 			// ServerListForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(609, 453);
-			this.Controls.Add(this.button1);
+			this.ClientSize = new System.Drawing.Size(531, 453);
+			this.Controls.Add(this.ServerInputSave);
 			this.Controls.Add(this.ServerInputPass);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.ServerInputPort);
@@ -162,6 +165,6 @@
 		private System.Windows.Forms.TextBox ServerInputPort;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.TextBox ServerInputPass;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button ServerInputSave;
 	}
 }

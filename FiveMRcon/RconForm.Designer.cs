@@ -35,10 +35,10 @@
 			this.Toolbar = new System.Windows.Forms.ToolStrip();
 			this.ToolbarServerDropdown = new System.Windows.Forms.ToolStripDropDownButton();
 			this.ToolbarServerDropdownConnect = new System.Windows.Forms.ToolStripMenuItem();
+			this.ToolbarServerDropdownSaved = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolbarEditDropdown = new System.Windows.Forms.ToolStripDropDownButton();
 			this.ToolbarEditDropdownClearHistory = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolbarEditDropdownSettings = new System.Windows.Forms.ToolStripMenuItem();
-			this.ToolbarServerDropdownSaved = new System.Windows.Forms.ToolStripMenuItem();
 			this.Toolbar.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -91,8 +91,8 @@
 			this.ToolbarServerDropdown.AutoToolTip = false;
 			this.ToolbarServerDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.ToolbarServerDropdown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolbarServerDropdownConnect,
-            this.ToolbarServerDropdownSaved});
+            this.ToolbarServerDropdownSaved,
+            this.ToolbarServerDropdownConnect});
 			this.ToolbarServerDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.ToolbarServerDropdown.Name = "ToolbarServerDropdown";
 			this.ToolbarServerDropdown.Size = new System.Drawing.Size(52, 22);
@@ -106,12 +106,19 @@
 			this.ToolbarServerDropdownConnect.Text = "Direct Connect";
 			this.ToolbarServerDropdownConnect.Click += new System.EventHandler(this.ToolbarServerDropdownConnect_Click);
 			// 
+			// ToolbarServerDropdownSaved
+			// 
+			this.ToolbarServerDropdownSaved.Name = "ToolbarServerDropdownSaved";
+			this.ToolbarServerDropdownSaved.Size = new System.Drawing.Size(180, 22);
+			this.ToolbarServerDropdownSaved.Text = "Saved Servers";
+			this.ToolbarServerDropdownSaved.Click += new System.EventHandler(this.ToolbarServerDropdownSaved_Click);
+			// 
 			// ToolbarEditDropdown
 			// 
 			this.ToolbarEditDropdown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
 			this.ToolbarEditDropdown.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolbarEditDropdownClearHistory,
-            this.ToolbarEditDropdownSettings});
+            this.ToolbarEditDropdownSettings,
+            this.ToolbarEditDropdownClearHistory});
 			this.ToolbarEditDropdown.Image = ((System.Drawing.Image)(resources.GetObject("ToolbarEditDropdown.Image")));
 			this.ToolbarEditDropdown.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.ToolbarEditDropdown.Name = "ToolbarEditDropdown";
@@ -131,13 +138,6 @@
 			this.ToolbarEditDropdownSettings.Size = new System.Drawing.Size(202, 22);
 			this.ToolbarEditDropdownSettings.Text = "Settings";
 			this.ToolbarEditDropdownSettings.Click += new System.EventHandler(this.ToolbarEditDropdownSettings_Click);
-			// 
-			// ToolbarServerDropdownSaved
-			// 
-			this.ToolbarServerDropdownSaved.Name = "ToolbarServerDropdownSaved";
-			this.ToolbarServerDropdownSaved.Size = new System.Drawing.Size(180, 22);
-			this.ToolbarServerDropdownSaved.Text = "Saved Servers";
-			this.ToolbarServerDropdownSaved.Click += new System.EventHandler(this.ToolbarServerDropdownSaved_Click);
 			// 
 			// RconForm
 			// 
