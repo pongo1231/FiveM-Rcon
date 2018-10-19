@@ -21,26 +21,30 @@ namespace FiveMRcon
 
 		private void ToolbarServerDropdownConnect_Click(object sender, EventArgs e)
 		{
-			ServerConnectForm serverConnectDialog = new ServerConnectForm(this);
-			serverConnectDialog.ShowDialog();
+			new ServerConnectForm(this).ShowDialog();
 		}
 
 		private void ToolbarServerDropdownSaved_Click(object sender, EventArgs e)
 		{
-			ServerListForm serverListDialog = new ServerListForm();
-			serverListDialog.ShowDialog();
+			try
+			{
+				new ServerListForm(this).ShowDialog();
+			}
+			catch (ObjectDisposedException)
+			{
+				// Don't panic bro
+			}
 		}
 
 		private void ToolbarEditDropdownClearHistory_Click(object sender, EventArgs e)
 		{
 			_CurrentCmdHistoryNode = new CmdHistoryNode(null);
-			MessageBox.Show("Command History cleared!");
+			MessageBox.Show("Previous Commands Cleared!");
 		}
 
 		private void ToolbarEditDropdownSettings_Click(object sender, EventArgs e)
 		{
-			SettingsForm settingsDialog = new SettingsForm();
-			settingsDialog.ShowDialog();
+			new SettingsForm().ShowDialog();
 		}
 
 		private void InputText_TextChanged(object sender, EventArgs e)
@@ -118,7 +122,7 @@ namespace FiveMRcon
 					}
 					catch (SocketException)
 					{
-						_Log(_LogType.RECEIVED, "Time Out");
+						_Log(_LogType.RECEIVED, "Timeout (No Answer)");
 						SystemSounds.Beep.Play();
 					}
 				}

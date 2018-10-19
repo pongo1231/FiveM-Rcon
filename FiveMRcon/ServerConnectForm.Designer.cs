@@ -100,7 +100,7 @@
 			this.InputPort.Location = new System.Drawing.Point(271, 16);
 			this.InputPort.Mask = "00000";
 			this.InputPort.Name = "InputPort";
-			this.InputPort.Size = new System.Drawing.Size(43, 20);
+			this.InputPort.Size = new System.Drawing.Size(39, 20);
 			this.InputPort.TabIndex = 7;
 			// 
 			// ServerConnectForm

@@ -34,11 +34,11 @@
 			this.Log = new System.Windows.Forms.TextBox();
 			this.Toolbar = new System.Windows.Forms.ToolStrip();
 			this.ToolbarServerDropdown = new System.Windows.Forms.ToolStripDropDownButton();
-			this.ToolbarServerDropdownConnect = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolbarServerDropdownSaved = new System.Windows.Forms.ToolStripMenuItem();
+			this.ToolbarServerDropdownConnect = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolbarEditDropdown = new System.Windows.Forms.ToolStripDropDownButton();
-			this.ToolbarEditDropdownClearHistory = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolbarEditDropdownSettings = new System.Windows.Forms.ToolStripMenuItem();
+			this.ToolbarEditDropdownClearHistory = new System.Windows.Forms.ToolStripMenuItem();
 			this.Toolbar.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -99,19 +99,19 @@
 			this.ToolbarServerDropdown.Text = "Server";
 			this.ToolbarServerDropdown.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
 			// 
-			// ToolbarServerDropdownConnect
-			// 
-			this.ToolbarServerDropdownConnect.Name = "ToolbarServerDropdownConnect";
-			this.ToolbarServerDropdownConnect.Size = new System.Drawing.Size(180, 22);
-			this.ToolbarServerDropdownConnect.Text = "Direct Connect";
-			this.ToolbarServerDropdownConnect.Click += new System.EventHandler(this.ToolbarServerDropdownConnect_Click);
-			// 
 			// ToolbarServerDropdownSaved
 			// 
 			this.ToolbarServerDropdownSaved.Name = "ToolbarServerDropdownSaved";
-			this.ToolbarServerDropdownSaved.Size = new System.Drawing.Size(180, 22);
+			this.ToolbarServerDropdownSaved.Size = new System.Drawing.Size(153, 22);
 			this.ToolbarServerDropdownSaved.Text = "Saved Servers";
 			this.ToolbarServerDropdownSaved.Click += new System.EventHandler(this.ToolbarServerDropdownSaved_Click);
+			// 
+			// ToolbarServerDropdownConnect
+			// 
+			this.ToolbarServerDropdownConnect.Name = "ToolbarServerDropdownConnect";
+			this.ToolbarServerDropdownConnect.Size = new System.Drawing.Size(153, 22);
+			this.ToolbarServerDropdownConnect.Text = "Direct Connect";
+			this.ToolbarServerDropdownConnect.Click += new System.EventHandler(this.ToolbarServerDropdownConnect_Click);
 			// 
 			// ToolbarEditDropdown
 			// 
@@ -125,19 +125,19 @@
 			this.ToolbarEditDropdown.Size = new System.Drawing.Size(40, 22);
 			this.ToolbarEditDropdown.Text = "Edit";
 			// 
-			// ToolbarEditDropdownClearHistory
-			// 
-			this.ToolbarEditDropdownClearHistory.Name = "ToolbarEditDropdownClearHistory";
-			this.ToolbarEditDropdownClearHistory.Size = new System.Drawing.Size(202, 22);
-			this.ToolbarEditDropdownClearHistory.Text = "Clear Command History";
-			this.ToolbarEditDropdownClearHistory.Click += new System.EventHandler(this.ToolbarEditDropdownClearHistory_Click);
-			// 
 			// ToolbarEditDropdownSettings
 			// 
 			this.ToolbarEditDropdownSettings.Name = "ToolbarEditDropdownSettings";
-			this.ToolbarEditDropdownSettings.Size = new System.Drawing.Size(202, 22);
+			this.ToolbarEditDropdownSettings.Size = new System.Drawing.Size(214, 22);
 			this.ToolbarEditDropdownSettings.Text = "Settings";
 			this.ToolbarEditDropdownSettings.Click += new System.EventHandler(this.ToolbarEditDropdownSettings_Click);
+			// 
+			// ToolbarEditDropdownClearHistory
+			// 
+			this.ToolbarEditDropdownClearHistory.Name = "ToolbarEditDropdownClearHistory";
+			this.ToolbarEditDropdownClearHistory.Size = new System.Drawing.Size(214, 22);
+			this.ToolbarEditDropdownClearHistory.Text = "Clear Previous Commands";
+			this.ToolbarEditDropdownClearHistory.Click += new System.EventHandler(this.ToolbarEditDropdownClearHistory_Click);
 			// 
 			// RconForm
 			// 

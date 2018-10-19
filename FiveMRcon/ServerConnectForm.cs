@@ -6,13 +6,6 @@ namespace FiveMRcon
 	public partial class ServerConnectForm : Form
 	{
 		private Form _Parent { get; }
-		private bool _IsIPAndPassEntered
-		{
-			get
-			{
-				return InputIP.Text.Trim().Length > 0 && InputPass.Text.Trim().Length > 0;
-			}
-		}
 
 		public ServerConnectForm(Form parent)
 		{
@@ -30,12 +23,12 @@ namespace FiveMRcon
 
 		private void InputIP_TextChanged(object sender, System.EventArgs e)
 		{
-			InputConnect.Enabled = _IsIPAndPassEntered;
+			InputConnect.Enabled = _IsIPAndPassEntered();
 		}
 
 		private void InputPass_TextChanged(object sender, System.EventArgs e)
 		{
-			InputConnect.Enabled = _IsIPAndPassEntered;
+			InputConnect.Enabled = _IsIPAndPassEntered();
 		}
 
 		private void InputConnect_Click(object sender, System.EventArgs e)
@@ -53,6 +46,11 @@ namespace FiveMRcon
 
 			_Parent.Text = InputIP.Text;
 			Close();
+		}
+
+		private bool _IsIPAndPassEntered()
+		{
+			return InputIP.Text.Trim() != "" && InputPass.Text.Trim() != "";
 		}
 	}
 }
