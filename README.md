@@ -8,7 +8,7 @@ Features:
 * Quick Connect to servers
 * Server List for saving your servers to connect at a later time
 * Command History to view/use your previous commands
-* More comming at a later time!
+* More coming at a later time!
 
 ---
 
