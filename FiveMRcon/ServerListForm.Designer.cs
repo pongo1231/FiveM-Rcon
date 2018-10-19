@@ -41,6 +41,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.ServerInputName = new System.Windows.Forms.TextBox();
 			this.ServerInputConnect = new System.Windows.Forms.Button();
+			this.label5 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// ServerList
@@ -169,11 +170,21 @@
 			this.ServerInputConnect.UseVisualStyleBackColor = true;
 			this.ServerInputConnect.Click += new System.EventHandler(this.ServerInputConnect_Click);
 			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(325, 176);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(107, 13);
+			this.label5.TabIndex = 13;
+			this.label5.Text = "(Saves it in plaintext!)";
+			// 
 			// ServerListForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(531, 453);
+			this.Controls.Add(this.label5);
 			this.Controls.Add(this.ServerInputConnect);
 			this.Controls.Add(this.ServerInputName);
 			this.Controls.Add(this.label4);
@@ -211,5 +222,6 @@
 		private System.Windows.Forms.TextBox ServerInputName;
 		private System.Windows.Forms.MaskedTextBox ServerInputPort;
 		private System.Windows.Forms.Button ServerInputConnect;
+		private System.Windows.Forms.Label label5;
 	}
 }
