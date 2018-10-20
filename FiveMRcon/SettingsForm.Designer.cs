@@ -15,6 +15,7 @@
 
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
 			this.label1 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
@@ -34,6 +35,7 @@
 			this.ClientSize = new System.Drawing.Size(316, 224);
 			this.Controls.Add(this.label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "SettingsForm";
 			this.Text = "SettingsForm";
 			this.ResumeLayout(false);

@@ -15,6 +15,7 @@
 
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerConnectForm));
 			this.InputIP = new System.Windows.Forms.TextBox();
 			this.InputPass = new System.Windows.Forms.TextBox();
 			this.InputConnect = new System.Windows.Forms.Button();
@@ -104,6 +105,7 @@
 			this.Controls.Add(this.InputPass);
 			this.Controls.Add(this.InputIP);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ServerConnectForm";
 			this.ShowInTaskbar = false;
 			this.Text = "Connect To Server";

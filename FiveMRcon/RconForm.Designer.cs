@@ -137,6 +137,7 @@
 			this.Controls.Add(this.InputSend);
 			this.Controls.Add(this.InputText);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "RconForm";
 			this.Text = "FiveM Rcon";
 			this.Toolbar.ResumeLayout(false);

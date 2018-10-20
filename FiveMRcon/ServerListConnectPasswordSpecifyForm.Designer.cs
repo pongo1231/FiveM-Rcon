@@ -15,6 +15,7 @@
 
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerListConnectPasswordSpecifyForm));
 			this.label1 = new System.Windows.Forms.Label();
 			this.ConnectPass = new System.Windows.Forms.TextBox();
 			this.ConnectOK = new System.Windows.Forms.Button();
@@ -58,6 +59,7 @@
 			this.Controls.Add(this.ConnectPass);
 			this.Controls.Add(this.label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ServerListConnectPasswordSpecifyForm";
 			this.ShowInTaskbar = false;
 			this.Text = "Connect";

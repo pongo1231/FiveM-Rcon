@@ -15,6 +15,7 @@
 
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServerListForm));
 			this.ServerList = new System.Windows.Forms.ListView();
 			this.ServerAdd = new System.Windows.Forms.Button();
 			this.ServerDelete = new System.Windows.Forms.Button();
@@ -186,6 +187,7 @@
 			this.Controls.Add(this.ServerAdd);
 			this.Controls.Add(this.ServerList);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ServerListForm";
 			this.ShowInTaskbar = false;
 			this.Text = "Saved Servers";
