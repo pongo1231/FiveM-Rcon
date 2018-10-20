@@ -68,11 +68,11 @@ namespace FiveMRcon
 				Server server = _ServerList[_ServerItemIndex];
 				InfoHolder.ServerIP = server.ServerIP;
 				InfoHolder.ServerPort = server.ServerPort;
-				if (_IsStringNull(server.ServerPassword))
+				if (server.ServerPassword._IsStringNull())
 					new ServerListConnectPasswordSpecifyForm().ShowDialog();
 				else
 					InfoHolder.ServerPass = server.ServerPassword;
-				_Parent.Text = !_IsStringNull(server.ServerName) ? server.ServerName : server.ServerIP;
+				_Parent.Text = !server.ServerName._IsStringNull() ? server.ServerName : server.ServerIP;
 				Close();
 			}
 		}
@@ -145,7 +145,7 @@ namespace FiveMRcon
 					}
 					catch (FormatException)
 					{
-						MessageBox.Show($"Error while parsing port of server in {_XFileName}: {(!_IsStringNull(name) ? "name / " : "")}" +
+						MessageBox.Show($"Error while parsing port of server in {_XFileName}: {(!name._IsStringNull() ? "name / " : "")}" +
 							$"{ip}:{xServer["port"].InnerText.Trim()}");
 						Close();
 						return;
@@ -158,7 +158,7 @@ namespace FiveMRcon
 
 			ServerList.Items.Clear();
 			foreach (Server server in _ServerList)
-				ServerList.Items.Add(!_IsStringNull(server.ServerName) ? server.ServerName : server.ServerIP);
+				ServerList.Items.Add(!server.ServerName._IsStringNull() ? server.ServerName : server.ServerIP);
 
 			_SetServerEditUIEnabled(_ServerItemIndex != -1);
 			_ClearServerEditInputs();
@@ -185,12 +185,12 @@ namespace FiveMRcon
 			foreach (Server server in _ServerList)
 			{
 				writeText += "	<server>\n";
-				if (!_IsStringNull(server.ServerName))
+				if (!server.ServerName._IsStringNull())
 					writeText += $"		<name>{server.ServerName.Trim()}</name>\n";
-				if (!_IsStringNull(server.ServerIP))
+				if (!server.ServerIP._IsStringNull())
 					writeText += $"		<ip>{server.ServerIP.Trim()}</ip>\n";
 				writeText += $"		<port>{server.ServerPort}</port>\n";
-				if (!_IsStringNull(server.ServerPassword))
+				if (!server.ServerPassword._IsStringNull())
 					writeText += $"		<pass>{server.ServerPassword.Trim()}</pass>\n";
 				writeText += "	</server>\n";
 			}
@@ -204,14 +204,9 @@ namespace FiveMRcon
 			_InitServersList();
 		}
 
-		private bool _IsStringNull(string text)
-		{
-			return text == null || text.Trim() == "";
-		}
-
 		private bool _CheckForValidInputIPAndPort()
 		{
-			bool valid = !_IsStringNull(ServerInputIP.Text) && !_IsStringNull(ServerInputPort.Text);
+			bool valid = !ServerInputIP.Text._IsStringNull() && !ServerInputPort.Text._IsStringNull();
 			if (!valid)
 				MessageBox.Show("Please enter an IP and a Port.");
 			return valid;

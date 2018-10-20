@@ -50,7 +50,7 @@ namespace FiveMRcon
 
 		private bool _IsIPAndPassEntered()
 		{
-			return InputIP.Text.Trim() != "" && InputPass.Text.Trim() != "";
+			return !InputIP.Text._IsStringNull() && !InputPass.Text._IsStringNull();
 		}
 	}
 }

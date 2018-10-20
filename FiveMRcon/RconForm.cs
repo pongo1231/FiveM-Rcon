@@ -49,7 +49,7 @@ namespace FiveMRcon
 
 		private void InputText_TextChanged(object sender, EventArgs e)
 		{
-			InputSend.Enabled = InputText.Text.Trim().Length > 0;
+			InputSend.Enabled = !InputText.Text._IsStringNull();
 		}
 
 		private void InputText_KeyUp(object sender, KeyEventArgs e)
