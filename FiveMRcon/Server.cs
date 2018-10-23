@@ -2,8 +2,8 @@
 {
 	public enum ServerProtocolType
 	{
-		FIVEM,
-		SRCDS
+		FiveM,
+		Srcds
 	}
 
 	public struct Server

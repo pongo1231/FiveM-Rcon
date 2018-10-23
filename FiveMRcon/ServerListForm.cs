@@ -19,6 +19,7 @@ namespace FiveMRcon
 			_ServerItemIndex = -1;
 
 			InitializeComponent();
+			_InitComboBox();
 			try
 			{
 				_InitServersList();
@@ -27,6 +28,11 @@ namespace FiveMRcon
 			{
 				MessageBox.Show($"Failed reading {_XFileName}: {e.Message} {e.StackTrace}");
 			}
+		}
+
+		private void _InitComboBox()
+		{
+			ServerInputProtocol.DataSource = Enum.GetValues(typeof(ServerProtocolType));
 		}
 
 		private void ServerList_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -45,6 +51,7 @@ namespace FiveMRcon
 				ServerInputIP.Text = selectedServer.ServerIP;
 				ServerInputPort.Text = $"{selectedServer.ServerPort}";
 				ServerInputPass.Text = selectedServer.ServerPassword;
+				ServerInputProtocol.SelectedItem = selectedServer.ServerProtocol;
 				_ServerItemIndex = e.ItemIndex;
 			}
 		}
@@ -72,6 +79,7 @@ namespace FiveMRcon
 					new ServerListConnectPasswordSpecifyForm().ShowDialog();
 				else
 					InfoHolder.ServerPass = server.ServerPassword;
+				InfoHolder.ServerProtocol = server.ServerProtocol;
 				_Parent.Text = !server.ServerName._IsStringNull() ? server.ServerName : server.ServerIP;
 				Close();
 			}
@@ -79,7 +87,7 @@ namespace FiveMRcon
 
 		private void ServerAdd_Click(object sender, EventArgs e)
 		{
-			Server newServer = new Server("New Server", null, 30120);
+			Server newServer = new Server(ServerProtocolType.FiveM, "New Server", null, 30120);
 			_ServerList.Add(newServer);
 			// Set item index to new server item
 			_ServerItemIndex = _ServerList.Count - 1;
@@ -101,6 +109,7 @@ namespace FiveMRcon
 			ServerInputIP.Enabled = enabled;
 			ServerInputPort.Enabled = enabled;
 			ServerInputPass.Enabled = enabled;
+			ServerInputProtocol.Enabled = enabled;
 			ServerInputSave.Enabled = enabled;
 			ServerInputConnect.Enabled = enabled;
 			ServerDelete.Enabled = enabled;
@@ -131,29 +140,28 @@ namespace FiveMRcon
 			_ServerList = new List<Server>();
 			foreach (XmlNode xServer in xDoc.DocumentElement.ChildNodes)
 			{
+				ServerProtocolType protocol = ServerProtocolType.FiveM;
+				if (xServer["protocol"] != null)
+				{
+					if (int.TryParse(xServer["protocol"].InnerText.Trim(), out int protocolInt))
+						protocol = (ServerProtocolType) protocolInt;
+					else
+						continue;
+				}
 				string name = null;
 				if (xServer["name"] != null)
 					name = xServer["name"].InnerText.Trim();
 				string ip = null;
 				if (xServer["ip"] != null)
 					ip = xServer["ip"].InnerText.Trim();
-				int port = -1;
+				int port = 0;
 				if (xServer["port"] != null)
-					try
-					{
-						port = int.Parse(xServer["port"].InnerText.Trim());
-					}
-					catch (FormatException)
-					{
-						MessageBox.Show($"Error while parsing port of server in {_XFileName}: {(!name._IsStringNull() ? "name / " : "")}" +
-							$"{ip}:{xServer["port"].InnerText.Trim()}");
-						Close();
-						return;
-					}
+					if (!int.TryParse(xServer["port"].InnerText.Trim(), out port))
+						continue;
 				string pass = null;
 				if (xServer["pass"] != null)
 					pass = xServer["pass"].InnerText.Trim();
-				_ServerList.Add(new Server(name, ip, port, pass));
+				_ServerList.Add(new Server(protocol, name, ip, port, pass));
 			}
 
 			ServerList.Items.Clear();
@@ -167,7 +175,6 @@ namespace FiveMRcon
 			{
 				ServerList.Items[_ServerItemIndex].Selected = true;
 				ServerList.Select();
-				//ServerList.Items[_ServerItemIndex].EnsureVisible();
 			}
 		}
 
@@ -185,6 +192,7 @@ namespace FiveMRcon
 			foreach (Server server in _ServerList)
 			{
 				writeText += "	<server>\n";
+				writeText += $"		<protocol>{(int) server.ServerProtocol}</protocol>\n";
 				if (!server.ServerName._IsStringNull())
 					writeText += $"		<name>{server.ServerName.Trim()}</name>\n";
 				if (!server.ServerIP._IsStringNull())
@@ -214,8 +222,8 @@ namespace FiveMRcon
 
 		private void _ApplyInputInfoToServer()
 		{
-			_ServerList[_ServerItemIndex] = new Server(ServerInputName.Text, ServerInputIP.Text, int.Parse(ServerInputPort.Text),
-					ServerInputPass.Text);
+			_ServerList[_ServerItemIndex] = new Server((ServerProtocolType) ServerInputProtocol.SelectedItem, ServerInputName.Text,
+				ServerInputIP.Text, int.Parse(ServerInputPort.Text), ServerInputPass.Text);
 		}
 	}
 }

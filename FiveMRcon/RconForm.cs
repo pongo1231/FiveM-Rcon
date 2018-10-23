@@ -1,8 +1,11 @@
-﻿using System;
+﻿using RconSharp;
+using RconSharp.Net45;
+using System;
 using System.Media;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FiveMRcon
@@ -30,10 +33,7 @@ namespace FiveMRcon
 			{
 				new ServerListForm(this).ShowDialog();
 			}
-			catch (ObjectDisposedException)
-			{
-				// Don't panic bro
-			}
+			catch (ObjectDisposedException) { /* Don't panic bro */ }
 		}
 
 		private void ToolbarEditDropdownClearHistory_Click(object sender, EventArgs e)
@@ -88,43 +88,22 @@ namespace FiveMRcon
 			string ip = InfoHolder.ServerIP;
 			int port = InfoHolder.ServerPort;
 			string pass = InfoHolder.ServerPass;
+			ServerProtocolType protocol = InfoHolder.ServerProtocol;
 			if (ip == null || port == 0 || pass == null)
 			{
-				_Log(_LogType.RECEIVED, "Please specify a server first.");
-				SystemSounds.Beep.Play();
+				_Log(_LogType.RECEIVED, "Please specify a server first.", true);
 			}
 			else
 			{
 				IPEndPoint endPoint = null;
 				try
 				{
-					endPoint = new IPEndPoint(IPAddress.Parse(ip), port);
+					endPoint = new IPEndPoint(Dns.GetHostAddresses(ip)[0], port);
+					_ProtocolSendRcon(endPoint, protocol, pass, InputText.Text.Trim());
 				}
-				catch (FormatException)
+				catch (SocketException)
 				{
-					_Log(_LogType.RECEIVED, "Invalid IP");
-					SystemSounds.Beep.Play();
-				}
-
-				if (endPoint != null)
-				{
-					UdpClient udp = new UdpClient();
-					udp.Client.SendTimeout = 1000;
-					udp.Client.ReceiveTimeout = 1000;
-
-					byte[] sendData = Encoding.Default.GetBytes($"\xFF\xFF\xFF\xFFrcon {pass} {InputText.Text}");
-					udp.Send(sendData, sendData.Length, endPoint);
-
-					try
-					{
-						byte[] receiveData = udp.Receive(ref endPoint);
-						_Log(_LogType.RECEIVED, Encoding.Default.GetString(receiveData).Substring(10));
-					}
-					catch (SocketException)
-					{
-						_Log(_LogType.RECEIVED, "Timeout (No Answer)");
-						SystemSounds.Beep.Play();
-					}
+					_Log(_LogType.RECEIVED, "Invalid IP", true);
 				}
 			}
 
@@ -143,12 +122,57 @@ namespace FiveMRcon
 			ActiveControl = InputText;
 		}
 
+		private async void _ProtocolSendRcon(IPEndPoint endPoint, ServerProtocolType protocol, string pass, string cmd)
+		{
+			switch (protocol)
+			{
+				case ServerProtocolType.FiveM:
+					UdpClient udp = new UdpClient();
+					udp.Client.SendTimeout = 1000;
+					udp.Client.ReceiveTimeout = 1000;
+
+					byte[] sendData = Encoding.Default.GetBytes($"\xFF\xFF\xFF\xFFrcon {pass} {cmd}");
+					await udp.SendAsync(sendData, sendData.Length, endPoint);
+
+					try
+					{
+						byte[] receiveData = udp.Receive(ref endPoint);
+						_Log(_LogType.RECEIVED, Encoding.Default.GetString(receiveData).Substring(10).Trim());
+					}
+					catch (SocketException)
+					{
+						_Log(_LogType.RECEIVED, "Timeout (No Answer)", true);
+					}
+					break;
+				case ServerProtocolType.Srcds:
+					RconMessenger messenger = new RconMessenger(new RconSocket());
+					if (!await messenger.ConnectAsync($"{endPoint.Address}", endPoint.Port))
+					{
+						_Log(_LogType.RECEIVED, "Timeout (No Answer)", true);
+						return;
+					}
+
+					if (!await messenger.AuthenticateAsync(pass))
+					{
+						_Log(_LogType.RECEIVED, "Wrong Password", true);
+						return;
+					}
+					else
+					{
+						string response = await messenger.ExecuteCommandAsync(cmd);
+						if (!response._IsStringNull())
+							_Log(_LogType.RECEIVED, response.Trim());
+					}
+					break;
+			}
+		}
+
 		private enum _LogType {
 			SENT,
 			RECEIVED
 		}
 
-		private void _Log(_LogType logType, string text)
+		private void _Log(_LogType logType, string text, bool fatal = false)
 		{
 			string prefix = null;
 			if (InfoHolder.ServerIP != null)
@@ -158,6 +182,8 @@ namespace FiveMRcon
 			else
 				prefix = $"{prefix} <";
 			Log.AppendText($"{prefix} {text} \r\n");
+			if (fatal)
+				SystemSounds.Beep.Play();
 		}
 	}
 }
