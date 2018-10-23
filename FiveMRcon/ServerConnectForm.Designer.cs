@@ -28,7 +28,6 @@
 			// InputIP
 			// 
 			this.InputIP.Location = new System.Drawing.Point(75, 16);
-			this.InputIP.MaxLength = 30;
 			this.InputIP.Name = "InputIP";
 			this.InputIP.Size = new System.Drawing.Size(155, 20);
 			this.InputIP.TabIndex = 0;
@@ -37,7 +36,6 @@
 			// InputPass
 			// 
 			this.InputPass.Location = new System.Drawing.Point(75, 62);
-			this.InputPass.MaxLength = 50;
 			this.InputPass.Name = "InputPass";
 			this.InputPass.Size = new System.Drawing.Size(155, 20);
 			this.InputPass.TabIndex = 1;
