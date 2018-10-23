@@ -23,12 +23,12 @@ namespace FiveMRcon
 
 		private void InputIP_TextChanged(object sender, System.EventArgs e)
 		{
-			InputConnect.Enabled = _IsIPAndPassEntered();
+			InputConnect.Enabled = _IsIPEntered();
 		}
 
 		private void InputPass_TextChanged(object sender, System.EventArgs e)
 		{
-			InputConnect.Enabled = _IsIPAndPassEntered();
+			InputConnect.Enabled = _IsIPEntered();
 		}
 
 		private void InputConnect_Click(object sender, System.EventArgs e)
@@ -48,9 +48,9 @@ namespace FiveMRcon
 			Close();
 		}
 
-		private bool _IsIPAndPassEntered()
+		private bool _IsIPEntered()
 		{
-			return !InputIP.Text._IsStringNull() && !InputPass.Text._IsStringNull();
+			return !InputIP.Text._IsStringNull();
 		}
 	}
 }
