@@ -109,7 +109,7 @@ namespace FiveMRcon
 			ServerInputIP.Enabled = enabled;
 			ServerInputPort.Enabled = enabled;
 			ServerInputPass.Enabled = enabled;
-			ServerInputProtocol.Enabled = enabled;
+			ServerInputProtocol.Enabled = false;
 			ServerInputSave.Enabled = enabled;
 			ServerInputConnect.Enabled = enabled;
 			ServerDelete.Enabled = enabled;
