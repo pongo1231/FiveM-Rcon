@@ -11,7 +11,8 @@ namespace FiveMRcon
 			string[] args = Environment.GetCommandLineArgs();
 			if (args.Length > 1)
 				InfoHolder.ServerIP = args[1];
-			if (args.Length > 2) {
+			if (args.Length > 2)
+            {
 				if (int.TryParse(args[2], out int port))
 					InfoHolder.ServerPort = port;
 				else
