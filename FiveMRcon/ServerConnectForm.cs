@@ -34,6 +34,7 @@ namespace FiveMRcon
 		private void InputConnect_Click(object sender, System.EventArgs e)
 		{
 			InfoHolder.ServerIP = InputIP.Text.Trim();
+            InfoHolder.ServerPass = InputPass.Text.Trim();
 			if (int.TryParse(InputPort.Text, out int port))
 				InfoHolder.ServerPort = port;
 			else
